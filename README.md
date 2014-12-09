@@ -9,6 +9,10 @@ To parse and respond to RANGE requests, this library uses the ByteRangeSteamCont
 
 The limitation of only supporting seekable stream objects is purely driven by the limtations of the ByteRangeStreamContent class. It's possible to create a new class that will parse the range header and respond appropriately using various other objects like a byte array but this is outside the scope of this library right now. If someone wants to contribute some code and tests to support a wider range of content, that would be great but for not it seems just as easy to wrap byte arrays in a memory stream to pass off to the library.
 
+**NuGet Package Information**
+
+When I have a substantial change, I'll publish a new version to NuGet. The first version is [already published](https://www.nuget.org/packages/VikingErik.Net.Http.ProgressiveDownload).
+
 **Build Information**
 
 I've signed the build with a password protected certificate. This is so the library can be used with trusted assemblies. I chose to keep this private so others can't sign updated assemblies as me. If you're trying to build this source yourself, simply open the project properties for the VikingErik.Net.Http.ProgressiveDownload project, go to the Signing tab and uncheck the option "Sign the assembly" (or replace the key with a new one of your own).
