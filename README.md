@@ -13,6 +13,23 @@ The limitation of only supporting seekable stream objects is purely driven by th
 
 When I have a substantial change, I'll publish a new version to NuGet. The first version is [already published](https://www.nuget.org/packages/VikingErik.Net.Http.ProgressiveDownload).
 
+**Usage Information**
+
+Using the library is very simple, assuming you have access to a seekable stream object containing your content. In the example below, we're using the FileStream object which satisfies the requirement. This is how I'm using the library at home to make video files available to my iOS devices for streaming to my AppleTV. Necessity is the mother of invention!
+```csharp
+[Route("api/video/{filename}")]
+public class VideoController : ApiController
+{
+  public HttpResponseMessage Get(string filename)
+  {
+    var decodedFileName = Uri.UnescapeDataString(filename);
+    var vidFile = File.OpenRead(Path.Combine(@"D:\Videos\", decodedFileName) + ".m4v");
+
+    return new ProgressiveDownload(Request).ResultMessage(vidFile, "video/mp4");
+  }
+}
+```
+
 **Build Information**
 
 I've signed the build with a password protected certificate. This is so the library can be used with trusted assemblies. I chose to keep this private so others can't sign updated assemblies as me. If you're trying to build this source yourself, simply open the project properties for the VikingErik.Net.Http.ProgressiveDownload project, go to the Signing tab and uncheck the option "Sign the assembly" (or replace the key with a new one of your own).
