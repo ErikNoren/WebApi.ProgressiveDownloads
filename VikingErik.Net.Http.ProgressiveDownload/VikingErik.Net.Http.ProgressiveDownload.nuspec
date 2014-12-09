@@ -1,0 +1,17 @@
+<?xml version="1.0"?>
+<package >
+  <metadata>
+    <id>$id$</id>
+    <version>$version$</version>
+    <title>$title$</title>
+    <authors>$author$</authors>
+    <owners>$author$</owners>
+    <licenseUrl>https://github.com/ErikNoren/WebApi.ProgressiveDownloads/blob/master/VikingErik.Net.Http.ProgressiveDownload/LICENSE.txt</licenseUrl>
+    <projectUrl>https://github.com/ErikNoren/WebApi.ProgressiveDownloads</projectUrl>
+    <requireLicenseAcceptance>true</requireLicenseAcceptance>
+    <description>$description$</description>
+    <releaseNotes>Initial release. Uses ByteRangeStreamContent to respond to HTTP BYTE RANGE requests.</releaseNotes>
+    <copyright>Copyright 2014</copyright>
+    <tags>Progressive Download WebApi Web Api HTTP ByteRange Byte Range Result</tags>
+  </metadata>
+</package>

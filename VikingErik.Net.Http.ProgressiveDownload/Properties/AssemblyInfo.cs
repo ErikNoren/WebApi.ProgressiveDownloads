@@ -8,7 +8,7 @@ using System.Runtime.InteropServices;
 [assembly: AssemblyTitle("VikingErik.Net.Http")]
 [assembly: AssemblyDescription("Progressive Download Library for WebApi 2")]
 [assembly: AssemblyConfiguration("")]
-[assembly: AssemblyCompany("")]
+[assembly: AssemblyCompany("Erik Noren")]
 [assembly: AssemblyProduct("VikingErik.Net.Http")]
 [assembly: AssemblyCopyright("Copyright ©  2014")]
 [assembly: AssemblyTrademark("")]
