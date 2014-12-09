@@ -11,7 +11,7 @@ The limitation of only supporting seekable stream objects is purely driven by th
 
 **NuGet Package Information**
 
-When I have a substantial change, I'll publish a new version to NuGet. The first version is [already published](https://www.nuget.org/packages/VikingErik.Net.Http.ProgressiveDownload).
+When I have a substantial change, I'll publish a new version [to NuGet](https://www.nuget.org/packages/VikingErik.Net.Http.ProgressiveDownload).
 
 **Usage Information**
 
@@ -34,6 +34,4 @@ public class VideoController : ApiController
 
 I've signed the build with a password protected certificate. This is so the library can be used with trusted assemblies. I chose to keep this private so others can't sign updated assemblies as me. If you're trying to build this source yourself, simply open the project properties for the VikingErik.Net.Http.ProgressiveDownload project, go to the Signing tab and uncheck the option "Sign the assembly" (or replace the key with a new one of your own).
 
-The project depends on WebApi NuGet packages and .NET 4.5. When I get time I'll see if I can walk the NuGet package reference to Microsoft.AspNet.WebApi.Client and Microsoft.AspNet.WebApi.Core from 5.2.2 to a lower version and see what the minimum version is that this library can support.
-
-The tests I wrote currently cover 100% of the library. I'm not sure if they're useful tests or if there are better ones but for now they are doing their job.
+The project depends on WebApi NuGet packages and .NET 4.5. ~~When I get time I'll see if I can walk the NuGet package reference to Microsoft.AspNet.WebApi.Client and Microsoft.AspNet.WebApi.Core from 5.2.2 to a lower version and see what the minimum version is that this library can support.~~ I've downgraded the dependencies to 5.0.0 in the latest version published to NuGet for the WebApi dependencies. The Newtonsoft JSON dependency was also downgraded. All tests continue to pass. This should make the library more compatible with older WebApi deployments where people are hesitant to update their dependencies.
