@@ -115,6 +115,38 @@ namespace VikingErik.Net.Http.Tests
             }
         }
 
+        [TestMethod]
+        public void TestProgressiveDownloadWithoutRangeRequestHasAcceptRangesBytesResponseHeader()
+        {
+            HttpRequestMessage request = new HttpRequestMessage();
+            request.Headers.Range = null;
+
+            var ms = new MemoryStream(_DummyData);
+            ms.Seek(0, SeekOrigin.Begin);
+
+            var vidStreamer = new ProgressiveDownload(request);
+            using (var result = vidStreamer.ResultMessage(ms, "application/octet-stream"))
+            {
+                Assert.IsTrue(result.Headers.AcceptRanges.Contains("bytes"));
+            }
+        }
+
+        [TestMethod]
+        public void TestProgressiveDownloadWithRangeRequestHasAcceptRangesBytesResponseHeader()
+        {
+            HttpRequestMessage request = new HttpRequestMessage();
+            request.Headers.Range = new System.Net.Http.Headers.RangeHeaderValue(0, 5);
+
+            var ms = new MemoryStream(_DummyData);
+            ms.Seek(0, SeekOrigin.Begin);
+
+            var vidStreamer = new ProgressiveDownload(request);
+            using (var result = vidStreamer.ResultMessage(ms, "application/octet-stream"))
+            {
+                Assert.IsTrue(result.Headers.AcceptRanges.Contains("bytes"));
+            }
+        }
+
         public ProgressiveDownloadTests()
         {
             _DummyData = new byte[] { 1, 2, 3, 4, 5, 6, 7, 8, 9, 0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 0 };
