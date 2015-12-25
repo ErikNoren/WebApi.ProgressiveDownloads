@@ -25,6 +25,7 @@ namespace VikingErik.Net.Http
                 {
                     var content = new ByteRangeStreamContent(stream, _Request.Headers.Range, mediaType);
                     var response = _Request.CreateResponse(HttpStatusCode.PartialContent);
+                    response.Headers.AcceptRanges.Add("bytes");
                     response.Content = content;
 
                     return response;
@@ -33,6 +34,7 @@ namespace VikingErik.Net.Http
                 {
                     var content = new StreamContent(stream);
                     var response = _Request.CreateResponse(HttpStatusCode.OK);
+                    response.Headers.AcceptRanges.Add("bytes");
                     response.Content = content;
                     response.Content.Headers.ContentType = MediaTypeHeaderValue.Parse(mediaType);
 
